@@ -156,53 +156,66 @@ export default connect(mapStateToProps, { getAllUsers, loginUser, otherActionCre
 
 
 //Q: How do we bind a method to its component?
-//A: 
+//A: we can bind it inside the constructor method (old way) or simply by writing our helper functions as an arrow function (automatically binds the method to the context it was declared)
 
 
 //Q: What are the similarities between state and props?
-//A: 
+//A: Both are objects, both store data
 
 //Q: What are the differences between state and props?
-//A: 
+//A: props is data meant to be passed/accessed in the child
 
 //Q: What are the arguments that setState takes? (1st is required/2nd is optional)
-//A: 
+//A: 1st argument is an object with the piece(s) of state to be updated, second is a callback function that is executed AFTER the state has been set
 
 //Q: What is the "key" used for when looping/creating components?
-//A: 
+//A: key is used to make sure there are no duplicates and to make the process faster
 
 //Q: What are propTypes used for?
-//A: 
+//A: To declare and enforce the expected types for each component prop
 
 //Q: What do we mean by 'Component Lifecycle'?
-//A: 
+//A: The various stages a component goes through. Includes mounting, updating, and unmounting. Can have various things occur at these different stages in the components lifecycle through use of component lifecycle methods. 
 
 //Q: What is the difference between mounting and rendering?
-//A: 
+//A: Mounting only occurs once at the beggining of the component lifecycle, render occurs many times anytime there is a change/update to state
 
 //Q: What are the main Lifecycle methods used (name at least 1) in each of the 3 lifecycle stages?
-//A: 
+//A: mounting phase - componentDidMount, updating phase - componentDidUpdate, unmounting phase - componentWillUnmount
 
 //Q: What do we mean by 'single source of truth'?
-//A: 
+//A: The store (the single source of truth) is the one place all application state is stored, updated, and accessed
 
 //Q: What is Redux Thunk? How does it work?
-//A: 
+//A: Redux Thunk is a middleware to handle asynchronous action creators. When using redux thunk the action creator can return either an object or a function. If the action creator is synchronous it will return an action object like normal. If the action creator is asynchronous it will return a function instead (this is the new part). The function will wait for the asyncronous operation to complete and then the action is manually dispatched inside the function. 
 
 //Q: What does the Provider do in React-Redux?
-//A: 
+//A: The provider allows any/all components to have access to the store state
 
 //Q: What does Connect do in React-Redux?
-//A: 
+//A: the Connect method allows a specific component to actually access the store state that the provider provides
 
 //Q: What two arguments do we pass connect?
-//A: 
+//A: mapStateToProps, mapDispatchToProps
 
 //Q: decribe how to write a reducer. What are its parameters and syntax?
-//A: 
+//A: write a function, declare state and action as parameters, state can optionally be set to some initial state, make switch statement with action.type as the value to check, add cases for eah type and return the new state using the payload if necessary
+
+const initialState = {
+    all: [],
+    one: {}
+  }
+
+export default function(state = initialState, action) {
+    switch (action.type) {
+      case ADD_TODO:
+        return [ ...state.all, action.payload ]
+      default:
+        return state
+    }
 
 //Q: What is Switch tag used for in React-Router?
-//A: 
+//A: Renders the first child <Route> or <Redirect> that matches the location. It only renders the first match (unlike just using route tags which will render all matches)
 
 
 
