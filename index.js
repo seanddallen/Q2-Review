@@ -227,18 +227,18 @@ export default function(state = initialState, action) {
 /////////////////////////////////////////////////////////////////////////
 
 //Q: What is the virtual DOM? How does it work?
-//A: 
+//A: The virtual DOM is a layer on top of the actual DOM, it provides a separate copy of the DOM so that when it is updating it checks the difference between it (the virtual DOM) and the actual DOM and changes/renders only those differences in the actual DOM
 
 
 //Q: How can you force a component to rerender?
-//A: 
+//A: use forceUpdate() or set a piece of state and then update it
 
 //Q: What method is used to create a Store? What two arguments do we usually pass it?
-//A: 
+//A: createStore(rootReducer, applyMiddleware) -- root reducer includes all the combined reducers, applyMiddleware includes all the middleware
 
 //Q: What props does BrowserRouter provide to its children?
-//A: 
+//A: router props -- history, match, location
 
 //Q: How can I access the value of a URL param?
-//A: 
+//A: props.match.params.nameOfParameter
 
