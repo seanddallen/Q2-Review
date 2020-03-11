@@ -213,6 +213,29 @@ export default function(state = initialState, action) {
       default:
         return state
     }
+    
+
+//Q: decribe how to write an Action Creator. 
+
+export const fetchUsers = () => {
+  return async dispatch => {
+    let response = await axios.get(`http://localhost:8000/users`)
+        dispatch({
+            type: FETCH_USERS,
+            payload: response.data
+        })
+    }
+}
+    
+export const addListing = (newListing) => {
+  return async (dispatch) => {
+    let listing = await axios.post(`http://localhost:8000/addbucket/${newListing.id}`, newListing)
+    dispatch({
+      type: ADD_LISTING,
+      payload: listing.data[0]
+    })
+  }
+}
 
 //Q: What is Switch tag used for in React-Router?
 //A: Renders the first child <Route> or <Redirect> that matches the location. It only renders the first match (unlike just using route tags which will render all matches)
